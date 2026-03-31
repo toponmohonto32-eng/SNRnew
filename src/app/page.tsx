@@ -453,59 +453,6 @@ function StatsSection() {
   );
 }
 
-// Recommendations Section
-function RecommendationsSection() {
-  const { t } = useLanguage();
-  
-  return (
-    <section className="py-12 sm:py-16 bg-gradient-to-b from-white to-orange-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p className="text-gray-500 text-sm uppercase tracking-wide mb-4">{t('recommendationsBadge')}</p>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
-            {t('recommendationsTitle')}
-          </h2>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block"
-          >
-            <img 
-              src="https://i.ibb.co/Ngq7Kc66/Untitled-design-1.png" 
-              alt="S NEW ROOF Recommendations - Trusted Roofing Company"
-              className="h-32 sm:h-40 w-auto mx-auto drop-shadow-lg"
-            />
-          </motion.div>
-          
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
-            <div className="flex items-center gap-2 text-gray-600">
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-              <span className="text-sm font-medium">{t('recommendationsVerified')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-              <span className="text-sm font-medium">{t('recommendationsTrusted')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <CheckCircle2 className="w-5 h-5 text-green-600" />
-              <span className="text-sm font-medium">{t('recommendationsRated')}</span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 // Emergency Banner Section
 function EmergencyBanner() {
   const { t } = useLanguage();
@@ -3082,7 +3029,6 @@ export default function LandingPage() {
       <EmergencyBanner />
       <TrustSignalsSection />
       <StatsSection />
-      <RecommendationsSection />
       <SpecialOffersSection />
       <ServicesSection />
       <RoofingTypesSection />
