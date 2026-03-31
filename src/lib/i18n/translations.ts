@@ -78,6 +78,8 @@ export const translations = {
     serviceShingleDesc: "Quality asphalt shingle roofs in various styles and colors. Affordable and reliable.",
     serviceGutters: "Gutter Services",
     serviceGuttersDesc: "Gutter installation, repair, and cleaning to protect your home from water damage.",
+    serviceSkylight: "Skylight Services",
+    serviceSkylightDesc: "Professional skylight installation, repair, and replacement for natural light and ventilation.",
     learnMore: "Learn More",
     
     // Areas Section
@@ -141,13 +143,13 @@ export const translations = {
     financingApply: "Apply for Financing",
     financingLearn: "Call for Free Inspection",
     financing0: "Senior & Military Discount",
-    financing0Desc: "We provide special discounts for seniors and military personnel",
+    financing0Desc: "Special discounts available for seniors and military personnel",
     financingLow: "Pet Owner Discount",
-    financingLowDesc: "We provide special discount for pet owners",
-    financingQuick: "Quick Approval",
-    financingQuickDesc: "Get approved quickly with our fast process",
+    financingLowDesc: "Special discount for pet owners",
+    financingQuick: "Flexible Payment Plans",
+    financingQuickDesc: "We offer flexible payment options to fit your budget",
     financingNoPrepay: "Financial Support Available",
-    financingNoPrepayDesc: "We provide flexible payment plans to fit your needs",
+    financingNoPrepayDesc: "We provide financing options to make your project affordable",
     
     // Gallery
     galleryBadge: "Our Work",
@@ -381,6 +383,11 @@ export const translations = {
     navQuickNavigation: "Quick Navigation",
     navTop: "Top",
     
+    // CTA Section
+    ctaTitle: "Ready to Protect Your Home?",
+    ctaSubtitle: "Get a free roof inspection today and discover why 2,500+ homeowners trust S NEW ROOF.",
+    ctaButton: "Free Inspection",
+    
     // Service Page
     serviceProfessional: "Professional Service",
     serviceWhatWeOffer: "What We Offer",
@@ -487,6 +494,8 @@ export const translations = {
     serviceShingleDesc: "Techos de asfalto de calidad en varios estilos. Asequibles y confiables.",
     serviceGutters: "Servicios de Canaletas",
     serviceGuttersDesc: "Instalación y limpieza de canaletas para proteger su hogar.",
+    serviceSkylight: "Servicios de Tragaluz",
+    serviceSkylightDesc: "Instalación, reparación y reemplazo profesional de tragaluces para luz natural y ventilación.",
     learnMore: "Más Información",
     
     // Areas Section
@@ -550,13 +559,13 @@ export const translations = {
     financingApply: "Solicitar Financiamiento",
     financingLearn: "Llamar para Inspección Gratis",
     financing0: "Descuento para Adultos Mayores y Militar",
-    financing0Desc: "Proporcionamos descuentos especiales para adultos mayores y personal militar",
+    financing0Desc: "Descuentos especiales disponibles para adultos mayores y personal militar",
     financingLow: "Descuento para Dueños de Mascotas",
-    financingLowDesc: "Proporcionamos descuento especial para dueños de mascotas",
-    financingQuick: "Aprobación Rápida",
-    financingQuickDesc: "Aprobación rápida con nuestro proceso ágil",
+    financingLowDesc: "Descuento especial para dueños de mascotas",
+    financingQuick: "Planes de Pago Flexibles",
+    financingQuickDesc: "Ofrecemos opciones de pago flexibles para su presupuesto",
     financingNoPrepay: "Soporte Financiero Disponible",
-    financingNoPrepayDesc: "Proporcionamos planes de pago flexibles según sus necesidades",
+    financingNoPrepayDesc: "Ofrecemos opciones de financiamiento para hacer su proyecto asequible",
     
     // Gallery
     galleryBadge: "Nuestro Trabajo",
@@ -727,8 +736,8 @@ export const translations = {
     
     // CTA Section
     ctaTitle: "¿Necesita Ayuda con Su Techo Hoy?",
-    ctaSubtitle: "No espere hasta que un pequeño problema se convierta en una reparación mayor. Obtenga su inspección gratis ahora.",
-    ctaButton: "Programar Inspección Gratis",
+    ctaSubtitle: "Obtenga una inspección de techo gratis hoy y descubra por qué 2,500+ propietarios confían en S NEW ROOF.",
+    ctaButton: "Inspección Gratis",
     
     // Exit Popup
     exitTitle: "¡Espere! No Se Vaya",

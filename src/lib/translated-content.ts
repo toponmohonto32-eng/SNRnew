@@ -715,6 +715,94 @@ Los protectores de canaletas pueden reducir las necesidades de mantenimiento pre
       ],
     },
   },
+  'skylight-services': {
+    en: {
+      name: 'Skylight Services',
+      shortDescription: 'Professional skylight installation, repair, and replacement for natural light and ventilation.',
+      description: 'Expert skylight services in Orange County. Installation, repair, leak prevention, and replacement. Bring natural light into your home.',
+      longDescription: `Skylights are a beautiful way to bring natural light into your home, reduce energy costs, and create a more open, airy atmosphere. S NEW ROOF provides comprehensive skylight services including installation, repair, replacement, and leak prevention for homeowners throughout Orange County.
+
+Our skylight installation services cover all types of skylights including fixed skylights for natural light, ventilating skylights for fresh air circulation, and tubular skylights for smaller spaces. We work with leading manufacturers like Velux to provide high-quality, energy-efficient skylight solutions.
+
+Proper installation is critical for skylight performance and leak prevention. Our experienced technicians understand the complexities of roof penetrations and use proper flashing techniques to ensure your skylight remains watertight for years to come. We handle all aspects of the installation, from structural considerations to interior finishing.
+
+If your existing skylight is leaking, fogging up, or showing signs of age, we offer expert repair and replacement services. We can upgrade old skylights to modern, energy-efficient models that reduce heat transfer and UV damage while maximizing natural light.`,
+      features: [
+        'New skylight installation',
+        'Velux skylight dealer',
+        'Fixed and ventilating skylights',
+        'Tubular sun tunnels',
+        'Skylight leak repair',
+        'Skylight replacement',
+        'Flashing repair',
+        'Motorized skylights',
+      ],
+      benefits: [
+        'Natural light reduces energy costs',
+        'Improved ventilation and air quality',
+        'Enhanced home aesthetics',
+        'Increased property value',
+        'UV protection options available',
+        'Professional leak-free installation',
+      ],
+      process: [
+        { step: 1, title: 'Consultation', description: "Assess your home's structure and discuss skylight options." },
+        { step: 2, title: 'Selection', description: 'Choose from fixed, ventilating, or tubular skylights.' },
+        { step: 3, title: 'Preparation', description: 'Structural assessment and proper flashing preparation.' },
+        { step: 4, title: 'Installation', description: 'Professional installation with proper sealing and flashing.' },
+        { step: 5, title: 'Finishing', description: 'Interior trim work and final inspection.' },
+      ],
+      faqs: [
+        { question: 'Will a skylight leak?', answer: 'Properly installed skylights with quality flashing should not leak. Our professional installation includes proper flashing techniques that integrate with your roofing system to prevent water intrusion.' },
+        { question: 'Can a skylight be installed on any roof?', answer: 'Most roofs can accommodate skylights. Factors like roof pitch, framing structure, and roofing material affect installation. We assess your roof during consultation to determine the best approach.' },
+        { question: 'How much does skylight installation cost?', answer: 'Cost varies based on skylight type, size, and installation complexity. Fixed skylights are typically less expensive than ventilating models. We provide free estimates for all skylight projects.' },
+        { question: 'Can you fix my leaking skylight?', answer: 'Yes, we repair leaking skylights. The solution may involve resealing, flashing repair, or in some cases, replacement. We diagnose the issue and recommend the most cost-effective solution.' },
+      ],
+    },
+    es: {
+      name: 'Servicios de Tragaluz',
+      shortDescription: 'Instalación, reparación y reemplazo profesional de tragaluces para luz natural y ventilación.',
+      description: 'Servicios expertos de tragaluces en Orange County. Instalación, reparación, prevención de fugas y reemplazo. Traiga luz natural a su hogar.',
+      longDescription: `Los tragaluces son una forma hermosa de traer luz natural a su hogar, reducir costos de energía y crear una atmósfera más abierta y aireada. S NEW ROOF proporciona servicios completos de tragaluces incluyendo instalación, reparación, reemplazo y prevención de fugas para propietarios en todo Orange County.
+
+Nuestros servicios de instalación de tragaluces cubren todos los tipos de tragaluces incluyendo tragaluces fijos para luz natural, tragaluces ventilados para circulación de aire fresco y tragaluces tubulares para espacios más pequeños. Trabajamos con fabricantes líderes como Velux para proporcionar soluciones de tragaluces de alta calidad y eficiencia energética.
+
+La instalación adecuada es crítica para el rendimiento del tragaluz y la prevención de fugas. Nuestros técnicos experimentados entienden las complejidades de las penetraciones del techo y usan técnicas de flashing apropiadas para asegurar que su tragaluz permanezca hermético por años. Manejamos todos los aspectos de la instalación, desde consideraciones estructurales hasta acabados interiores.
+
+Si su tragaluz existente tiene fugas, se está empañando o muestra signos de edad, ofrecemos servicios expertos de reparación y reemplazo. Podemos actualizar tragaluces viejos a modelos modernos de alta eficiencia energética que reducen la transferencia de calor y el daño UV mientras maximizan la luz natural.`,
+      features: [
+        'Instalación de nuevos tragaluces',
+        'Distribuidor de tragaluces Velux',
+        'Tragaluces fijos y ventilados',
+        'Túneles solares tubulares',
+        'Reparación de fugas de tragaluces',
+        'Reemplazo de tragaluces',
+        'Reparación de flashing',
+        'Tragaluces motorizados',
+      ],
+      benefits: [
+        'La luz natural reduce costos de energía',
+        'Mejor ventilación y calidad del aire',
+        'Estética mejorada del hogar',
+        'Aumento del valor de la propiedad',
+        'Opciones de protección UV disponibles',
+        'Instalación profesional sin fugas',
+      ],
+      process: [
+        { step: 1, title: 'Consulta', description: 'Evaluar la estructura de su hogar y discutir opciones de tragaluces.' },
+        { step: 2, title: 'Selección', description: 'Elegir entre tragaluces fijos, ventilados o tubulares.' },
+        { step: 3, title: 'Preparación', description: 'Evaluación estructural y preparación adecuada del flashing.' },
+        { step: 4, title: 'Instalación', description: 'Instalación profesional con sellado y flashing apropiados.' },
+        { step: 5, title: 'Acabado', description: 'Trabajo de moldura interior e inspección final.' },
+      ],
+      faqs: [
+        { question: '¿Un tragaluz tendrá fugas?', answer: 'Los tragaluces instalados correctamente con flashing de calidad no deberían tener fugas. Nuestra instalación profesional incluye técnicas de flashing apropiadas que se integran con su sistema de techos para prevenir la intrusión de agua.' },
+        { question: '¿Se puede instalar un tragaluz en cualquier techo?', answer: 'La mayoría de los techos pueden acomodar tragaluces. Factores como la inclinación del techo, estructura de enmarcado y material del techo afectan la instalación. Evaluamos su techo durante la consulta para determinar el mejor enfoque.' },
+        { question: '¿Cuánto cuesta la instalación de un tragaluz?', answer: 'El costo varía según el tipo de tragaluz, tamaño y complejidad de instalación. Los tragaluces fijos son típicamente menos costosos que los modelos ventilados. Proporcionamos estimaciones gratis para todos los proyectos de tragaluces.' },
+        { question: '¿Pueden reparar mi tragaluz con fugas?', answer: 'Sí, reparamos tragaluces con fugas. La solución puede implicar resellar, reparar el flashing o en algunos casos, reemplazo. Diagnosticamos el problema y recomendamos la solución más rentable.' },
+      ],
+    },
+  },
 };
 
 // Location translations

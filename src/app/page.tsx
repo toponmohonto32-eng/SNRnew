@@ -47,8 +47,6 @@ import {
   Umbrella,
   Sparkles,
   Gift,
-  Play,
-  Quote,
   BadgeDollarSign,
   Handshake,
   ClipboardList,
@@ -56,6 +54,7 @@ import {
   TrendingUp,
   Camera,
   Globe,
+  Lightbulb,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -104,16 +103,16 @@ function Header() {
           <a href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-1.5 sm:p-2">
               <img 
-                src="https://i.ibb.co/0RZwPVxK/Untitled-design-5.png" 
+                src="https://i.ibb.co/FbssB2VW/Untitled-design.png" 
                 alt="S NEW ROOF Logo" 
                 className="h-10 sm:h-14 md:h-16 w-auto object-contain"
               />
             </div>
             {/* Tagline - visible on all devices */}
             <div className="flex flex-col justify-center min-w-0">
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight truncate">{t('brandName')}</span>
               <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-[#F97316] font-semibold leading-tight">{t('tagline1')}</span>
               <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-[#F97316] font-semibold leading-tight">{t('tagline2')}</span>
+              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight truncate">{t('brandName')}</span>
             </div>
           </a>
 
@@ -470,10 +469,10 @@ function EmergencyBanner() {
           </div>
           <a
             href="tel:+17147704756"
-            className="inline-flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-full font-bold hover:bg-gray-100 transition-colors border-2 border-red-600"
           >
-            <Phone className="w-4 h-4" />
-            (714) 770-4756
+            <Phone className="w-4 h-4 text-red-600" />
+            <span className="text-red-600">(714) 770-4756</span>
           </a>
         </div>
       </div>
@@ -556,22 +555,22 @@ function FinancingSection() {
   
   const options = [
     {
-      icon: Percent,
+      icon: Users,
       title: t('financing0'),
       description: t('financing0Desc'),
     },
     {
-      icon: DollarSign,
+      icon: Heart,
       title: t('financingLow'),
       description: t('financingLowDesc'),
     },
     {
-      icon: Clock3,
+      icon: CreditCard,
       title: t('financingQuick'),
       description: t('financingQuickDesc'),
     },
     {
-      icon: FileText,
+      icon: DollarSign,
       title: t('financingNoPrepay'),
       description: t('financingNoPrepayDesc'),
     },
@@ -637,38 +636,73 @@ function FinancingSection() {
 
 // Gallery Section (Before/After)
 function GallerySection() {
-  const { t } = useLanguage();
+  const { t, isSpanish } = useLanguage();
   
   const projects = [
     {
-      title: t('project1Title'),
-      location: t('project1Location'),
-      description: t('project1Desc'),
-      image: '/tile-roof.png',
+      slug: 'emergency-storm-damage',
+      title: 'Emergency Storm Damage Repair',
+      titleEs: 'Reparación de Emergencia por Tormenta',
+      location: 'Orange County, CA',
+      description: '24/7 emergency response with complete storm damage repair and insurance claim assistance.',
+      descriptionEs: 'Respuesta de emergencia 24/7 con reparación completa y asistencia con reclamos de seguro.',
+      image: 'https://i.ibb.co.com/HsXNfmH/1.jpg',
+      type: 'Storm Damage',
+      typeEs: 'Daños por Tormenta',
+      featured: true,
+      photos: 19,
     },
     {
-      title: t('project2Title'),
-      location: t('project2Location'),
-      description: t('project2Desc'),
-      image: '/shingle-roof.png',
+      slug: 'complete-roof-replacement',
+      title: 'Complete Roof Replacement',
+      titleEs: 'Reemplazo Completo de Techo',
+      location: 'Orange County, CA',
+      description: 'Full tear-off with premium architectural shingles, CertainTeed R-38 insulation, and Owens Corning underlayment.',
+      descriptionEs: 'Retiro completo con tejas arquitectónicas premium, aislamiento R-38 y subcapa Owens Corning.',
+      image: 'https://i.ibb.co.com/21Dy54MD/1.jpg',
+      type: 'Shingle Roofing',
+      typeEs: 'Techos de Tejas',
+      featured: false,
+      photos: 37,
     },
     {
-      title: t('project3Title'),
-      location: t('project3Location'),
-      description: t('project3Desc'),
-      image: '/flat-roof.png',
+      slug: 'shingle-roof-santa-ana',
+      title: 'Shingle Roof Installation',
+      titleEs: 'Instalación de Techo de Tejas',
+      location: 'Santa Ana, CA',
+      description: 'Complete roof replacement for Brett Ohls & Lorraine with premium architectural shingles.',
+      descriptionEs: 'Reemplazo completo para Brett Ohls y Lorraine con tejas arquitectónicas premium.',
+      image: 'https://i.ibb.co.com/mVBX77b3/Untitled-design-4.png',
+      type: 'Shingle Roofing',
+      typeEs: 'Techos de Tejas',
+      featured: false,
+      photos: 10,
     },
     {
-      title: t('project4Title'),
-      location: t('project4Location'),
-      description: t('project4Desc'),
-      image: '/storm-damage.png',
+      slug: 'roof-leak-repair',
+      title: 'Roof Leak Repair & Restoration',
+      titleEs: 'Reparación de Fugas y Restauración',
+      location: 'Orange County, CA',
+      description: 'Complete leak diagnosis and repair for Tom and Anna. Interior ceiling restoration and flashing replacement.',
+      descriptionEs: 'Diagnóstico completo de fugas y reparación para Tom y Anna. Restauración interior y reemplazo de flashing.',
+      image: 'https://i.ibb.co.com/pv1m1h6V/Whats-App-Image-2026-03-21-at-3-56-45-AM-1.jpg',
+      type: 'Leak Repair',
+      typeEs: 'Reparación de Fuga',
+      featured: false,
+      photos: 15,
     },
   ];
 
+  const getText = (en: string, es: string) => isSpanish ? es : en;
+
   return (
-    <section className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-gray-50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#F97316] to-transparent" />
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -676,9 +710,14 @@ function GallerySection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-[#F97316] rounded-full text-sm font-semibold mb-4">
+          <motion.span 
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F97316] text-white rounded-full text-sm font-semibold mb-4 shadow-lg"
+            animate={{ scale: [1, 1.02, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <Camera className="w-4 h-4" />
             {t('galleryBadge')}
-          </span>
+          </motion.span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {t('galleryTitle')}
           </h2>
@@ -690,42 +729,100 @@ function GallerySection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              key={project.slug}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
-              <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-50 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <MapPin className="w-4 h-4 text-white/80 inline mr-1" />
-                    <span className="text-white/80 text-sm">{project.location}</span>
+              <a href={`/gallery/${project.slug}`}>
+                <Card className="h-full overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer bg-white">
+                  {/* Project Image with Overlay */}
+                  <div className="relative h-48 sm:h-56 overflow-hidden">
+                    {/* Background Image */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${project.image})` }}
+                    />
+                    
+                    {/* Gradient Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#F97316]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Featured Badge */}
+                    {project.featured && (
+                      <motion.div 
+                        className="absolute top-3 right-3"
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold shadow-lg">
+                          ⭐ {getText('Featured', 'Destacado')}
+                        </span>
+                      </motion.div>
+                    )}
+                    
+                    {/* Type Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1.5 bg-white/95 backdrop-blur-sm text-gray-900 rounded-full text-xs font-semibold shadow-md">
+                        {getText(project.type, project.typeEs)}
+                      </span>
+                    </div>
+                    
+                    {/* Photo Count */}
+                    <div className="absolute bottom-3 right-3">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-black/70 backdrop-blur-sm text-white rounded-full text-xs font-medium">
+                        <Camera className="w-3.5 h-3.5" />
+                        {project.photos} {getText('Photos', 'Fotos')}
+                      </span>
+                    </div>
+                    
+                    {/* Location */}
+                    <motion.div 
+                      className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={{ x: -10 }}
+                      whileHover={{ x: 0 }}
+                    >
+                      <div className="flex items-center gap-1.5 text-white text-sm bg-black/50 backdrop-blur-sm px-2 py-1 rounded-full">
+                        <MapPin className="w-3.5 h-3.5" />
+                        <span>{project.location}</span>
+                      </div>
+                    </motion.div>
                   </div>
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-heading font-bold text-gray-900 mb-1">{project.title}</h3>
-                  <p className="text-sm text-gray-600">{project.description}</p>
-                </CardContent>
-              </Card>
+                  
+                  <CardContent className="p-5">
+                    <h3 className="font-heading text-lg font-bold text-gray-900 mb-2 group-hover:text-[#F97316] transition-colors duration-300">
+                      {getText(project.title, project.titleEs)}
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2">{getText(project.description, project.descriptionEs)}</p>
+                    
+                    {/* View Project Link */}
+                    <div className="mt-3 flex items-center text-[#F97316] text-sm font-medium group-hover:text-[#EA580C]">
+                      <span>{getText('View Project', 'Ver Proyecto')}</span>
+                      <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
             </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-10">
-          <Button variant="outline" size="lg" className="border-2 border-gray-300" asChild>
+        <motion.div 
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Button size="lg" className="bg-[#F97316] hover:bg-[#EA580C] text-white h-12 px-8 shadow-lg hover:shadow-xl transition-all" asChild>
             <a href="/gallery">
               {t('galleryViewMore')}
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -946,28 +1043,94 @@ function LocalTrustSection() {
 
         {/* Owner Message */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-12 text-center"
         >
-          <Card className="inline-block bg-gradient-to-r from-gray-900 to-gray-800 border-0 shadow-xl">
-            <CardContent className="p-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-20 h-20 rounded-full overflow-hidden shrink-0 border-4 border-[#F97316]">
-                  <img 
-                    src="/avatar.png" 
-                    alt="Samuel - Owner" 
-                    className="w-full h-full object-cover"
+          <Card className="inline-block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-0 shadow-2xl overflow-hidden relative">
+            {/* Animated Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-32 h-32 bg-[#F97316] rounded-full blur-3xl animate-pulse" />
+              <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#F97316] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            </div>
+            
+            <CardContent className="p-8 sm:p-10 relative z-10">
+              <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+                {/* Owner Image with Impressive Animation */}
+                <motion.div 
+                  className="relative shrink-0"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  {/* Animated Ring */}
+                  <motion.div 
+                    className="absolute inset-0 rounded-full border-4 border-[#F97316]"
+                    animate={{ 
+                      rotate: 360,
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    style={{ margin: -4 }}
                   />
-                </div>
-                <div className="text-left">
-                  <p className="text-white/90 italic text-lg mb-3">
+                  
+                  {/* Glow Effect */}
+                  <motion.div 
+                    className="absolute inset-0 rounded-full bg-[#F97316]/30 blur-xl"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.3, 0.5, 0.3]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  
+                  {/* Image Container */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#F97316] shadow-xl">
+                    <img 
+                      src="https://i.ibb.co.com/PGYmr4Q9/Gemini-Generated-Image-948v9m948v9m948v.png" 
+                      alt="Samuel - Owner & Founder of S NEW ROOF" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Badge */}
+                  <motion.div 
+                    className="absolute -bottom-1 -right-1 bg-[#F97316] rounded-full p-2 shadow-lg"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </motion.div>
+                </motion.div>
+                
+                <div className="text-left max-w-md">
+                  <motion.p 
+                    className="text-white/90 italic text-lg sm:text-xl mb-4 leading-relaxed"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
                     &ldquo;{t('localOwner')}&rdquo;
-                  </p>
-                  <p className="text-[#F97316] font-semibold">— {t('localOwnerName')}</p>
-                  <p className="text-white/60 text-sm">{t('localOwnerSince')}</p>
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                  >
+                    <p className="text-[#F97316] font-bold text-lg">— {t('localOwnerName')}</p>
+                    <p className="text-white/60 text-sm flex items-center gap-2 mt-1">
+                      <Award className="w-4 h-4 text-[#F97316]" />
+                      {t('localOwnerSince')}
+                    </p>
+                  </motion.div>
                 </div>
               </div>
             </CardContent>
@@ -1031,6 +1194,12 @@ function ServicesSection() {
       slug: 'gutter-services',
       description: t('serviceGuttersDesc'),
     },
+    {
+      icon: Lightbulb,
+      title: t('serviceSkylight'),
+      slug: 'skylight-services',
+      description: t('serviceSkylightDesc'),
+    },
   ];
 
   return (
@@ -1065,7 +1234,7 @@ function ServicesSection() {
               className="group"
             >
               <a href={`/services/${service.slug}`}>
-                <Card className="h-full hover:shadow-xl transition-all duration-300 border border-gray-100 bg-white hover:border-[#F97316]/30 hover:-translate-y-1 cursor-pointer">
+                <Card className="h-full transition-all duration-300 border border-gray-100 bg-white hover:border-[#F97316]/30 hover:-translate-y-1 cursor-pointer">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="w-8 h-8 text-[#F97316]" />
@@ -1087,6 +1256,527 @@ function ServicesSection() {
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+// Eligibility / Pre-Qualifier Section
+function EligibilitySection() {
+  const { t, isSpanish } = useLanguage();
+  const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    propertyAddress: '',
+    city: '',
+    state: 'CA',
+    zipCode: '',
+    propertyType: 'Single Family',
+    estimatedProjectCost: '',
+    employmentStatus: 'Employed',
+    annualIncome: '',
+    creditRange: 'Good (670-739)',
+  });
+
+  const propertyTypes = isSpanish 
+    ? ['Casa Individual', 'Condominio', 'Comercial', 'Multifamiliar']
+    : ['Single Family', 'Condo', 'Commercial', 'Multi-Family'];
+  
+  const employmentStatuses = isSpanish
+    ? ['Empleado', 'Autónomo', 'Retirado', 'Otros']
+    : ['Employed', 'Self-Employed', 'Retired', 'Other'];
+  
+  const creditRanges = isSpanish
+    ? ['Excelente (740+)', 'Bueno (670-739)', 'Regular (580-669)', 'Necesita Mejora (<580)']
+    : ['Excellent (740+)', 'Good (670-739)', 'Fair (580-669)', 'Needs Improvement (<580)'];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validateForm = (): boolean => {
+    if (!formData.firstName.trim() || !formData.lastName.trim()) {
+      setSubmitError(isSpanish ? 'Por favor ingrese su nombre completo' : 'Please enter your full name');
+      return false;
+    }
+    if (!formData.email.trim() || !formData.email.includes('@')) {
+      setSubmitError(isSpanish ? 'Por favor ingrese un correo válido' : 'Please enter a valid email');
+      return false;
+    }
+    if (!formData.phone.trim() || formData.phone.length < 10) {
+      setSubmitError(isSpanish ? 'Por favor ingrese un número de teléfono válido' : 'Please enter a valid phone number');
+      return false;
+    }
+    if (!formData.propertyAddress.trim()) {
+      setSubmitError(isSpanish ? 'Por favor ingrese su dirección' : 'Please enter your property address');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitError(null);
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Submit to Go High Level webhook
+      const response = await fetch('https://services.leadconnectorhq.com/calendars/events/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          address: `${formData.propertyAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`,
+          propertyType: formData.propertyType,
+          estimatedProjectCost: formData.estimatedProjectCost,
+          employmentStatus: formData.employmentStatus,
+          annualIncome: formData.annualIncome,
+          creditRange: formData.creditRange,
+          source: 'Website Eligibility Form',
+          locationId: 'snewroof',
+          formType: 'pre-qualification',
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form after delay
+        setTimeout(() => {
+          setShowForm(false);
+          setIsSubmitted(false);
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            propertyAddress: '',
+            city: '',
+            state: 'CA',
+            zipCode: '',
+            propertyType: 'Single Family',
+            estimatedProjectCost: '',
+            employmentStatus: 'Employed',
+            annualIncome: '',
+            creditRange: 'Good (670-739)',
+          });
+        }, 3000);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitError(isSpanish 
+        ? 'Hubo un error al enviar. Por favor intente de nuevo o llámenos.' 
+        : 'There was an error submitting. Please try again or call us.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeModal = () => {
+    setShowForm(false);
+    setIsSubmitted(false);
+    setSubmitError(null);
+  };
+
+  return (
+    <section className="py-12 sm:py-16 bg-gradient-to-r from-gray-900 to-gray-800 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-[#F97316] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F97316] rounded-full blur-3xl" />
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Left Content */}
+          <motion.div 
+            className="flex-1 text-center md:text-left"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              {isSpanish ? '¿Necesita reparaciones urgentes?' : 'Need Urgent Repairs?'}
+            </h2>
+            <p className="text-white/80 text-sm sm:text-base mb-4">
+              {isSpanish 
+                ? 'Verificación de crédito Suave - Sin afectar su puntaje'
+                : 'Soft Credit Pull - Won\'t affect your score'}
+            </p>
+            <p className="text-white/60 text-xs sm:text-sm">
+              {isSpanish 
+                ? 'Obtenga financiamiento con experiencia en techados de OC'
+                : 'Get financing with OC roofing expertise'}
+            </p>
+          </motion.div>
+          
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Button
+              size="lg"
+              className="bg-[#F97316] hover:bg-[#EA580C] text-white px-8 py-6 text-lg font-bold shadow-xl hover:shadow-2xl transition-all group"
+              onClick={() => setShowForm(true)}
+            >
+              <Send className="mr-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+              {isSpanish ? 'VERIFICAR ELEGIBILIDAD' : 'CHECK MY ELIGIBILITY'}
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Pre-Qualifier Form Modal */}
+      <AnimatePresence>
+        {showForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Form Header */}
+              <div className="bg-gradient-to-r from-[#F97316] to-[#EA580C] p-6 rounded-t-2xl sticky top-0 z-10">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-heading text-xl font-bold text-white">
+                      {isSpanish ? 'Formulario de Pre-Calificación' : 'Pre-Qualification Form'}
+                    </h3>
+                    <p className="text-white/80 text-sm mt-1">
+                      {isSpanish ? 'Financiamiento disponible hasta $100,000+' : 'Financing available up to $100,000+'}
+                    </p>
+                  </div>
+                  <button 
+                    onClick={closeModal}
+                    className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                  >
+                    <X className="w-5 h-5 text-white" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Success State */}
+              {isSubmitted ? (
+                <div className="p-8 text-center">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                  >
+                    <CheckCircle2 className="w-10 h-10 text-green-600" />
+                  </motion.div>
+                  <h4 className="font-heading text-2xl font-bold text-gray-900 mb-3">
+                    {isSpanish ? '¡Solicitud Enviada!' : 'Application Submitted!'}
+                  </h4>
+                  <p className="text-gray-600 mb-6">
+                    {isSpanish 
+                      ? 'Nuestro equipo revisará su solicitud y se comunicará con usted en 24 horas.'
+                      : 'Our team will review your application and contact you within 24 hours.'}
+                  </p>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-sm text-gray-500 mb-2">
+                      {isSpanish ? '¿Necesita ayuda inmediata?' : 'Need immediate assistance?'}
+                    </p>
+                    <a href="tel:+17147704756" className="text-[#F97316] font-bold text-lg hover:underline">
+                      (714) 770-4756
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="p-6 space-y-5">
+                  {/* Error Message */}
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                      <p className="text-red-700 text-sm">{submitError}</p>
+                    </div>
+                  )}
+
+                  {/* Name Row */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Nombre *' : 'First Name *'}
+                      </label>
+                      <Input
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        placeholder={isSpanish ? 'Juan' : 'John'}
+                        required
+                        className="h-11"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Apellido *' : 'Last Name *'}
+                      </label>
+                      <Input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        placeholder={isSpanish ? 'García' : 'Smith'}
+                        required
+                        className="h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email & Phone Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Correo Electrónico *' : 'Email *'}
+                      </label>
+                      <Input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="email@example.com"
+                        required
+                        className="h-11"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Teléfono *' : 'Phone *'}
+                      </label>
+                      <Input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="(714) 555-1234"
+                        required
+                        className="h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Property Address */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {isSpanish ? 'Dirección de la Propiedad *' : 'Property Address *'}
+                    </label>
+                    <Input
+                      type="text"
+                      name="propertyAddress"
+                      value={formData.propertyAddress}
+                      onChange={handleInputChange}
+                      placeholder={isSpanish ? '123 Calle Principal' : '123 Main Street'}
+                      required
+                      className="h-11"
+                    />
+                  </div>
+
+                  {/* City, State, ZIP */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Ciudad' : 'City'}
+                      </label>
+                      <Input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleInputChange}
+                        placeholder="Santa Ana"
+                        className="h-11"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Estado' : 'State'}
+                      </label>
+                      <select
+                        name="state"
+                        value={formData.state}
+                        onChange={handleInputChange}
+                        className="w-full h-11 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                      >
+                        <option value="CA">CA</option>
+                        <option value="AZ">AZ</option>
+                        <option value="NV">NV</option>
+                      </select>
+                    </div>
+                    <div className="col-span-2 sm:col-span-1">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Código Postal' : 'ZIP Code'}
+                      </label>
+                      <Input
+                        type="text"
+                        name="zipCode"
+                        value={formData.zipCode}
+                        onChange={handleInputChange}
+                        placeholder="92701"
+                        className="h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Property Type & Estimated Cost */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Tipo de Propiedad' : 'Property Type'}
+                      </label>
+                      <select
+                        name="propertyType"
+                        value={formData.propertyType}
+                        onChange={handleInputChange}
+                        className="w-full h-11 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                      >
+                        {propertyTypes.map(type => (
+                          <option key={type} value={type}>{type}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Costo Estimado del Proyecto' : 'Estimated Project Cost'}
+                      </label>
+                      <Input
+                        type="text"
+                        name="estimatedProjectCost"
+                        value={formData.estimatedProjectCost}
+                        onChange={handleInputChange}
+                        placeholder="$15,000"
+                        className="h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Employment Status & Annual Income */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Estado de Empleo' : 'Employment Status'}
+                      </label>
+                      <select
+                        name="employmentStatus"
+                        value={formData.employmentStatus}
+                        onChange={handleInputChange}
+                        className="w-full h-11 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                      >
+                        {employmentStatuses.map(status => (
+                          <option key={status} value={status}>{status}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        {isSpanish ? 'Ingreso Anual' : 'Annual Income'}
+                      </label>
+                      <select
+                        name="annualIncome"
+                        value={formData.annualIncome}
+                        onChange={handleInputChange}
+                        className="w-full h-11 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                      >
+                        <option value="">{isSpanish ? 'Seleccionar...' : 'Select...'}</option>
+                        <option value="Under $50,000">{isSpanish ? 'Menos de $50,000' : 'Under $50,000'}</option>
+                        <option value="$50,000 - $75,000">$50,000 - $75,000</option>
+                        <option value="$75,000 - $100,000">$75,000 - $100,000</option>
+                        <option value="$100,000 - $150,000">$100,000 - $150,000</option>
+                        <option value="$150,000 - $200,000">$150,000 - $200,000</option>
+                        <option value="Over $200,000">{isSpanish ? 'Más de $200,000' : 'Over $200,000'}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Credit Range */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {isSpanish ? 'Rango de Crédito Aproximado' : 'Approximate Credit Range'}
+                    </label>
+                    <select
+                      name="creditRange"
+                      value={formData.creditRange}
+                      onChange={handleInputChange}
+                      className="w-full h-11 px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                    >
+                      {creditRanges.map(range => (
+                        <option key={range} value={range}>{range}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white h-14 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                        {isSpanish ? 'Enviando...' : 'Submitting...'}
+                      </>
+                    ) : (
+                      <>
+                        {isSpanish ? 'VERIFICAR ELEGIBILIDAD' : 'CHECK MY ELIGIBILITY'}
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </>
+                    )}
+                  </Button>
+
+                  {/* Trust Note */}
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <Shield className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
+                      <p className="text-xs text-gray-500">
+                        {isSpanish 
+                          ? 'Al enviar este formulario, acepta nuestros Términos y Condiciones. Esta es una verificación de crédito suave que NO afectará su puntaje de crédito. Sus datos están seguros y encriptados.'
+                          : 'By submitting this form, you agree to our Terms and Conditions. This is a soft credit pull that will NOT affect your credit score. Your data is secure and encrypted.'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="flex items-center justify-center gap-2 text-sm text-gray-600 pt-2">
+                    <Phone className="w-4 h-4 text-[#F97316]" />
+                    <span>{isSpanish ? '¿Preguntas? Llame al' : 'Questions? Call'} </span>
+                    <a href="tel:+17147704756" className="text-[#F97316] font-semibold hover:underline">
+                      (714) 770-4756
+                    </a>
+                  </div>
+                </form>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -1225,49 +1915,96 @@ function AreasSection() {
 
 // Social Proof Section
 function SocialProofSection() {
-  const { t } = useLanguage();
+  const { t, isSpanish } = useLanguage();
   
-  const reviews = [
+  // Project testimonials with project images
+  const projectTestimonials = [
     {
-      name: 'Northland Center',
-      location: 'Commercial Client',
+      name: 'Tom and Anna',
+      nameEs: 'Tom y Anna',
+      location: 'Orange County, CA',
+      projectType: 'Roof Leak Repair',
+      projectTypeEs: 'Reparación de Fuga',
+      projectSlug: 'roof-leak-repair',
+      projectImage: 'https://i.ibb.co.com/pv1m1h6V/Whats-App-Image-2026-03-21-at-3-56-45-AM-1.jpg',
+      avatar: '/avatars/tom-anna.png',
       rating: 5,
-      text: 'I had an emergency leak, late at night during a big storm. S New Roof was there in less than an hour and took care of everything. Since that night I\'ve had them come back to address other roofing issues. They have done some extensive repairs and maintenance. Always with professional workmanship and timely response. I have worked with dozens of roofing companies over the years on commercial projects. S New Roof is by far the best. 5 Stars all day! Highly Recommend!',
-      services: 'Roof repair for storm and wind damage, Roof installation',
+      text: 'We were worried when we saw water stains on our ceiling. S NEW ROOF came out the same day, found the leak quickly, and fixed everything - including the interior damage. They were professional, clean, and the repair is invisible. Highly recommend!',
+      textEs: 'Estábamos preocupados cuando vimos manchas de agua en nuestro techo. S NEW ROOF vino el mismo día, encontró la fuga rápidamente y arregló todo, incluyendo el daño interior. Fueron profesionales, limpios y la reparación es invisible. ¡Muy recomendado!',
+      photos: 15,
     },
+    {
+      name: 'Brett Ohls & Lorraine',
+      nameEs: 'Brett Ohls y Lorraine',
+      location: 'Santa Ana, CA',
+      projectType: 'Shingle Roof Installation',
+      projectTypeEs: 'Instalación de Techo',
+      projectSlug: 'shingle-roof-santa-ana',
+      projectImage: 'https://i.ibb.co.com/mVBX77b3/Untitled-design-4.png',
+      avatar: '/avatars/brett-lorraine.png',
+      rating: 5,
+      text: 'S NEW ROOF transformed our home! The team was professional, clean, and finished ahead of schedule. Our new roof looks absolutely stunning and we\'ve already noticed a difference in our energy bills. Highly recommend!',
+      textEs: '¡S NEW ROOF transformó nuestro hogar! El equipo fue profesional, limpio y terminó antes de lo programado. Nuestro nuevo techo se ve absolutamente impresionante y ya hemos notado una diferencia en nuestras facturas de energía.',
+      photos: 10,
+    },
+  ];
+
+  // Google reviews with avatars
+  const googleReviews = [
     {
       name: 'Amir Ghobrial',
       location: 'Residential Customer',
       rating: 5,
+      price: '$1–2,000',
       text: 'Wonderful job with professional staff with good pricing. Helped us replace and repair over 55 broken tiles on our roof. Were able to work same day of quote and stayed until job was done. Would highly recommend.',
-      services: 'Roof repair, Roof installation',
+      services: ['Roof repair', 'Roof installation', 'Roof damage repair'],
+      avatar: '/avatars/reviewer-2.png',
     },
     {
       name: 'Alonso Damian',
       location: 'Homeowner',
       rating: 5,
       text: 'Amazing work from Samuel owner at S New Roof!!! Listen to all my needs from the 1st appointment to when he completed my home. Very professional and clean. Will recommend to my friends and family!!',
-      services: 'Roof Installation',
+      services: ['Roof Installation'],
+      avatar: '/avatars/reviewer-3.png',
     },
     {
       name: 'Mush Bek',
       location: 'Homeowner',
       rating: 5,
-      text: 'I couldn\'t be happier with the work S New Roof did on my home. From start to finish, the entire process was smooth and stress-free. The team was professional, punctual, and detail-oriented. They kept me informed every step of the way, worked efficiently, and the finished roof looks fantastic. They also made sure the job site was cleaned up thoroughly once the project was done. It\'s rare to find a company that combines great craftsmanship, clear communication, and professionalism all in one — but S New Roof delivered on all fronts.',
-      services: 'Full Roof Replacement',
+      text: 'I couldn\'t be happier with the work S New Roof did on my home. From start to finish, the entire process was smooth and stress-free. The team was professional, punctual, and detail-oriented. They kept me informed every step of the way, worked efficiently, and the finished roof looks fantastic.',
+      services: ['Full Roof Replacement'],
+      avatar: '/avatars/reviewer-4.png',
     },
     {
       name: 'Brian Nguyen',
       location: 'Homeowner',
       rating: 5,
       text: 'Samuel and his team did an amazing job with my roof repair! Fantastic work replacing the damaged wood - everything looks brand new now. Great price and top-quality workmanship. Highly recommend!',
-      services: 'Roof Repair',
+      services: ['Roof Repair'],
+      avatar: '/avatars/reviewer-5.png',
+    },
+    {
+      name: 'Northland Center',
+      location: 'Commercial Client',
+      rating: 5,
+      text: 'I had an emergency leak late at night during a big storm. S New Roof was there in less than an hour and took care of everything. They have done extensive repairs and maintenance. S New Roof is by far the best roofing company I\'ve worked with!',
+      services: ['Storm damage repair', 'Roof installation'],
+      avatar: '/avatars/reviewer-1.png',
     },
   ];
 
+  const getText = (en: string, es: string) => isSpanish ? es : en;
+
   return (
-    <section id="reviews" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reviews" className="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F97316] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F97316] rounded-full blur-3xl" />
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1275,14 +2012,14 @@ function SocialProofSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-              ))}
-            </div>
-            <span className="text-gray-600 font-medium">{t('reviewsRating')}</span>
-          </div>
+          <motion.span 
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F97316] text-white rounded-full text-sm font-semibold mb-4 shadow-lg"
+            animate={{ scale: [1, 1.02, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <Star className="w-4 h-4" />
+            {t('reviewsBadge')}
+          </motion.span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {t('reviewsTitle')}
           </h2>
@@ -1291,33 +2028,147 @@ function SocialProofSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {reviews.map((review, index) => (
+        {/* Project Testimonials with Images */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10">
+          {projectTestimonials.map((review, index) => (
             <motion.div
-              key={review.name}
-              initial={{ opacity: 0, y: 20 }}
+              key={review.projectSlug}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={index >= 3 ? 'md:col-span-1 lg:col-span-1' : ''}
             >
-              <Card className="h-full border border-gray-100 hover:border-orange-200 transition-colors duration-300 hover:shadow-lg">
-                <CardContent className="p-6 sm:p-8">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
+              <a href={`/gallery/${review.projectSlug}`}>
+                <Card className="h-full overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer bg-white group">
+                  {/* Project Image */}
+                  <div className="relative h-48 sm:h-56 overflow-hidden">
+                    {/* Background Image */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                      style={{ backgroundImage: `url(${review.projectImage})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    
+                    {/* Project Type Badge */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-3 py-1.5 bg-white/95 backdrop-blur-sm text-gray-900 rounded-full text-xs font-semibold shadow-md">
+                        {getText(review.projectType, review.projectTypeEs)}
+                      </span>
+                    </div>
+
+                    {/* Photo Count */}
+                    <div className="absolute top-3 right-3">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-black/70 backdrop-blur-sm text-white rounded-full text-xs font-medium">
+                        <Camera className="w-3.5 h-3.5" />
+                        {review.photos}
+                      </span>
+                    </div>
+
+                    {/* Rating Stars */}
+                    <div className="absolute bottom-3 left-3 flex gap-0.5">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 }}
+                        >
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 drop-shadow" />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <CardContent className="p-5">
+                    {/* Testimonial Text */}
+                    <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-3">
+                      &ldquo;{getText(review.text, review.textEs)}&rdquo;
+                    </p>
+
+                    {/* Customer Info with Avatar */}
+                    <div className="flex items-center gap-3">
+                      <motion.div 
+                        className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#F97316] shadow-md shrink-0"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: 'spring', stiffness: 400 }}
+                      >
+                        <img
+                          src={review.avatar}
+                          alt={getText(review.name, review.nameEs)}
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-gray-900 truncate">{getText(review.name, review.nameEs)}</p>
+                        <div className="flex items-center gap-1 text-sm text-gray-500">
+                          <MapPin className="w-3.5 h-3.5" />
+                          <span>{review.location}</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-[#F97316] group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Google Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {googleReviews.map((review, index) => (
+            <motion.div
+              key={review.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.08 }}
+              whileHover={{ y: -5 }}
+            >
+              <Card className="h-full border border-gray-100 hover:border-[#F97316]/30 hover:shadow-xl transition-all duration-300 bg-white">
+                <CardContent className="p-6">
+                  {/* Stars with Animation */}
+                  <div className="flex gap-0.5 mb-3">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                      <motion.div
+                        key={i}
+                        initial={{ scale: 0, rotate: -30 }}
+                        whileInView={{ scale: 1, rotate: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + i * 0.05 }}
+                      >
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                      </motion.div>
                     ))}
                   </div>
 
+                  {/* Price Badge if available */}
+                  {review.price && (
+                    <motion.div 
+                      className="mb-3"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                        <ThumbsUp className="w-3 h-3" />
+                        Great price · {review.price}
+                      </span>
+                    </motion.div>
+                  )}
+
                   {/* Review Text */}
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">&ldquo;{review.text}&rdquo;</p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                    &ldquo;{review.text}&rdquo;
+                  </p>
 
                   {/* Services Used */}
                   {review.services && (
                     <div className="mb-4 flex flex-wrap gap-1">
-                      {review.services.split(', ').map((service, i) => (
-                        <span key={i} className="text-xs bg-orange-100 text-[#F97316] px-2 py-1 rounded-full">
+                      {review.services.map((service, i) => (
+                        <span key={i} className="text-xs bg-orange-50 text-[#F97316] px-2 py-1 rounded-full">
                           {service}
                         </span>
                       ))}
@@ -1325,15 +2176,20 @@ function SocialProofSection() {
                   )}
 
                   {/* Customer Info */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-                      <span className="text-[#F97316] font-bold text-sm">
-                        {review.name.charAt(0)}
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+                    <motion.div 
+                      className="w-10 h-10 rounded-full overflow-hidden border-2 border-orange-100 shrink-0"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <img
+                        src={review.avatar}
+                        alt={review.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
                     <div>
-                      <p className="font-semibold text-gray-900">{review.name}</p>
-                      <p className="text-sm text-gray-500">{review.location}</p>
+                      <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
+                      <p className="text-xs text-gray-500">{review.location}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -1342,7 +2198,7 @@ function SocialProofSection() {
           ))}
         </div>
 
-        {/* Google Review Link */}
+        {/* View All Projects Link */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1350,10 +2206,10 @@ function SocialProofSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-10"
         >
-          <Button variant="outline" size="lg" className="border-2 border-gray-300 hover:border-[#F97316]" asChild>
-            <a href="#contact">
-              <Star className="mr-2 w-5 h-5 text-yellow-500" />
-              {t('reviewsLeaveReview')}
+          <Button size="lg" className="bg-[#F97316] hover:bg-[#EA580C] text-white h-12 px-8 shadow-lg hover:shadow-xl transition-all" asChild>
+            <a href="/gallery">
+              <Camera className="mr-2 w-5 h-5" />
+              {t('galleryViewMore')}
             </a>
           </Button>
         </motion.div>
@@ -1663,14 +2519,14 @@ function WarrantySection() {
         >
           <Card className="inline-block bg-gradient-to-r from-[#F97316] to-[#EA580C] border-0">
             <CardContent className="p-6">
-              <div className="flex items-center gap-4 text-white">
+              <div className="flex flex-col sm:flex-row items-center gap-4 text-white">
                 <BadgeDollarSign className="w-10 h-10" />
-                <div className="text-left">
+                <div className="text-center sm:text-left">
                   <p className="font-heading text-xl font-bold">{t('warrantyDetails')}</p>
                   <p className="text-white/80 text-sm">{t('warrantyDetailsDesc')}</p>
                 </div>
                 <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#F97316] shrink-0" asChild>
-                  <a href="#contact-form">{t('warrantyRequest')}</a>
+                  <a href="https://api.leadconnectorhq.com/widget/bookings/free-roof-inspection-snewroof" target="_blank" rel="noopener noreferrer">{t('ctaButton')}</a>
                 </Button>
               </div>
             </CardContent>
@@ -1913,79 +2769,6 @@ function SpecialOffersSection() {
   );
 }
 
-// Video Testimonials Section
-function VideoTestimonialsSection() {
-  const { t } = useLanguage();
-  
-  const videos = [
-    { name: 'Sarah M.', location: 'Santa Ana', quote: t('videoQuote1') },
-    { name: 'Robert J.', location: 'Anaheim', quote: t('videoQuote2') },
-    { name: 'Maria L.', location: 'Irvine', quote: t('videoQuote3') },
-  ];
-
-  return (
-    <section className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-[#F97316] rounded-full text-sm font-semibold mb-4">
-            {t('videoBadge')}
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            {t('videoTitle')}
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            {t('videoSubtitle')}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {videos.map((video, index) => (
-            <motion.div
-              key={video.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full border border-gray-100 hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  {/* Video Placeholder */}
-                  <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <button className="w-16 h-16 bg-[#F97316] rounded-full flex items-center justify-center hover:bg-[#EA580C] transition-colors shadow-lg">
-                      <Play className="w-8 h-8 text-white ml-1" />
-                    </button>
-                  </div>
-                  <div className="p-5">
-                    <Quote className="w-8 h-8 text-orange-200 mb-2" />
-                    <p className="text-gray-700 italic mb-4">&ldquo;{video.quote}&rdquo;</p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-                        <span className="text-[#F97316] font-bold text-sm">
-                          {video.name.charAt(0)}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900">{video.name}</p>
-                        <p className="text-sm text-gray-500">{video.location}</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // Roofing Types Section
 function RoofingTypesSection() {
   const { t } = useLanguage();
@@ -1993,24 +2776,28 @@ function RoofingTypesSection() {
   const types = [
     {
       title: t('roofingAsphalt'),
+      slug: 'asphalt-shingle-roofing',
       description: t('roofingAsphaltDesc'),
       features: [t('roofingAsphaltF1'), t('roofingAsphaltF2'), t('roofingAsphaltF3')],
       image: '/shingle-roof.png',
     },
     {
       title: t('roofingClay'),
+      slug: 'clay-tile-roofing',
       description: t('roofingClayDesc'),
       features: [t('roofingClayF1'), t('roofingClayF2'), t('roofingClayF3')],
       image: '/tile-roof.png',
     },
     {
       title: t('roofingMetal'),
+      slug: 'metal-roofing',
       description: t('roofingMetalDesc'),
       features: [t('roofingMetalF1'), t('roofingMetalF2'), t('roofingMetalF3')],
       image: '/roofing-team.png',
     },
     {
       title: t('roofingFlat'),
+      slug: 'flat-roofing',
       description: t('roofingFlatDesc'),
       features: [t('roofingFlatF1'), t('roofingFlatF2'), t('roofingFlatF3')],
       image: '/flat-roof.png',
@@ -2041,38 +2828,44 @@ function RoofingTypesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {types.map((type, index) => (
             <motion.div
-              key={type.title}
+              key={type.slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group">
-                <CardContent className="p-0">
-                  <div className="relative h-40 overflow-hidden">
-                    <img
-                      src={type.image}
-                      alt={type.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <h3 className="absolute bottom-3 left-4 font-heading text-lg font-bold text-white">
-                      {type.title}
-                    </h3>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-gray-600 text-sm mb-4">{type.description}</p>
-                    <ul className="space-y-2">
-                      {type.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
+              <a href={`/roofing-types/${type.slug}`}>
+                <Card className="h-full overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                  <CardContent className="p-0">
+                    <div className="relative h-40 overflow-hidden">
+                      <img
+                        src={type.image}
+                        alt={type.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <h3 className="absolute bottom-3 left-4 font-heading text-lg font-bold text-white">
+                        {type.title}
+                      </h3>
+                    </div>
+                    <div className="p-5">
+                      <p className="text-gray-600 text-sm mb-4">{type.description}</p>
+                      <ul className="space-y-2 mb-4">
+                        {type.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                            <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <span className="inline-flex items-center text-[#F97316] font-medium text-sm group-hover:underline">
+                        {t('learnMore')}
+                        <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -2086,8 +2879,14 @@ function CTASection() {
   const { t } = useLanguage();
   
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-[#F97316]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 sm:py-24 bg-gradient-to-br from-[#F97316] to-[#EA580C] relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-2xl" />
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -2095,9 +2894,15 @@ function CTASection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
+            initial={{ scale: 0.9 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             {t('ctaTitle')}
-          </h2>
+          </motion.h2>
           <p className="text-white/90 text-lg sm:text-xl mb-8 max-w-2xl mx-auto">
             {t('ctaSubtitle')}
           </p>
@@ -2105,7 +2910,7 @@ function CTASection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button
               size="lg"
-              className="bg-white text-[#F97316] hover:bg-gray-100 text-lg px-8 py-6"
+              className="bg-white text-[#F97316] hover:bg-gray-100 text-lg px-8 py-6 font-bold shadow-xl hover:shadow-2xl transition-all"
               asChild
             >
               <a href="https://api.leadconnectorhq.com/widget/bookings/free-roof-inspection-snewroof" target="_blank" rel="noopener noreferrer">
@@ -2115,143 +2920,325 @@ function CTASection() {
             </Button>
           </div>
 
-          <a
+          {/* Phone Number CTA - Visible on orange background */}
+          <motion.a
             href="tel:+17147704756"
-            className="inline-flex items-center gap-3 text-white hover:text-white/90 transition-colors"
+            className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+            whileHover={{ scale: 1.05 }}
           >
-            <Phone className="w-8 h-8" />
-            <span className="font-heading text-3xl sm:text-4xl font-bold">(714) 770-4756</span>
-          </a>
+            <div className="w-10 h-10 bg-[#F97316] rounded-full flex items-center justify-center">
+              <Phone className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-heading text-2xl sm:text-3xl font-bold text-gray-900">(714) 770-4756</span>
+          </motion.a>
         </motion.div>
       </div>
     </section>
   );
 }
 
-// Lead Capture Form
+// Lead Capture Form with Go High Level Integration
 function LeadCaptureForm() {
-  const { t } = useLanguage();
-  
+  const { t, isSpanish } = useLanguage();
+
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
+    streetAddress: '',
+    city: '',
+    state: 'CA',
+    zipCode: '',
+    serviceType: 'Roof Replacement',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const serviceTypes = isSpanish ? [
+    'Reemplazo de Techo',
+    'Reparación de Techo',
+    'Reparación de Fuga de Emergencia',
+    'Reparación de Daños por Tormenta',
+    'Inspección de Techo',
+    'Techos de Tejas',
+    'Techos de Asfalto',
+    'Servicios de Canaletas',
+  ] : [
+    'Roof Replacement',
+    'Roof Repair',
+    'Emergency Leak Repair',
+    'Storm Damage Repair',
+    'Roof Inspection',
+    'Tile Roofing',
+    'Shingle Roofing',
+    'Gutter Services',
+  ];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Redirect to Go High Level booking page
-    window.open('https://api.leadconnectorhq.com/widget/bookings/free-roof-inspection-snewroof', '_blank');
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', phone: '', email: '', message: '' });
+    try {
+      // Submit to Go High Level webhook
+      const response = await fetch('https://services.leadconnectorhq.com/calendars/events/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          address: `${formData.streetAddress}, ${formData.city}, ${formData.state} ${formData.zipCode}`,
+          serviceType: formData.serviceType,
+          message: formData.message,
+          source: 'Website Estimate Form',
+          locationId: 'snewroof',
+        }),
+      });
+
+      // Also redirect to Go High Level booking page
+      window.open('https://api.leadconnectorhq.com/widget/bookings/free-roof-inspection-snewroof', '_blank');
+
+      setIsSubmitted(true);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        streetAddress: '',
+        city: '',
+        state: 'CA',
+        zipCode: '',
+        serviceType: 'Roof Replacement',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Still redirect even if API fails
+      window.open('https://api.leadconnectorhq.com/widget/bookings/free-roof-inspection-snewroof', '_blank');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  return (
-    <section id="contact-form" className="py-12 sm:py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-10"
-          >
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-              {t('formTitle')}
-            </h2>
-            <p className="text-gray-600 text-base sm:text-lg">
-              {t('formSubtitle')}
-            </p>
-          </motion.div>
+  const steps = [
+    { number: '01', label: isSpanish ? 'ENVÍE EL FORMULARIO' : 'SUBMIT THE FORM' },
+    { number: '02', label: isSpanish ? 'INSPECCIÓN DE TECHOS' : 'ROOFING INSPECTION' },
+    { number: '03', label: isSpanish ? 'INSTALACIÓN DE TECHO' : 'ROOF INSTALLATION' },
+  ];
 
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            onSubmit={handleSubmit}
-            className="space-y-5 sm:space-y-6"
-          >
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">{t('formFullName')}</label>
-              <Input
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="John Smith"
-                required
-                className="h-12 text-base"
-              />
+  return (
+    <section id="contact-form" className="py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/hero-bg.png"
+          alt="Roofing background"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/95 to-white" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Steps Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              {steps.map((step, index) => (
+                <div key={step.number} className="flex items-center gap-3">
+                  <div className={`flex items-center gap-3 ${index === 0 ? 'text-[#F97316]' : 'text-gray-400'}`}>
+                    <span className="font-heading text-2xl sm:text-3xl font-bold">{step.number}.</span>
+                    <span className="font-semibold text-sm sm:text-base">{step.label}</span>
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="hidden sm:block w-8 h-0.5 bg-gray-700" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Form Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="bg-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            {/* Form Title */}
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                {isSpanish ? 'OBTENGA UNA' : 'GET A'}{' '}
+                <span className="text-[#F97316]">{isSpanish ? 'COTIZACIÓN GRATIS' : 'FREE ESTIMATE'}</span>{' '}
+                {isSpanish ? '¡HOY!' : 'TODAY!'}
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">{t('formPhone')}</label>
-                <Input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="(555) 123-4567"
-                  required
-                  className="h-12 text-base"
-                />
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              {/* Name Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Input
+                    type="text"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    placeholder={isSpanish ? 'Nombre' : 'First Name'}
+                    required
+                    className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                  />
+                </div>
+                <div>
+                  <Input
+                    type="text"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    placeholder={isSpanish ? 'Apellido' : 'Last Name'}
+                    required
+                    className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                  />
+                </div>
               </div>
+
+              {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">{t('formEmail')}</label>
                 <Input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
+                  placeholder={isSpanish ? 'Correo Electrónico' : 'Email'}
                   required
-                  className="h-12 text-base"
+                  className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
                 />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">{t('formHowCanWeHelp')}</label>
-              <Textarea
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder={t('formPlaceholder')}
-                rows={4}
-                className="resize-none text-base"
-              />
-            </div>
+              {/* Phone */}
+              <div>
+                <Input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder={isSpanish ? 'Número de Teléfono' : 'Phone Number'}
+                  required
+                  className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                />
+              </div>
 
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white h-12 sm:h-14 text-base sm:text-lg"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 w-5 h-5 animate-spin" />
-                  {t('formSubmitting')}
-                </>
-              ) : isSubmitted ? (
-                <>
-                  <CheckCircle2 className="mr-2 w-5 h-5" />
-                  {t('formSubmitted')}
-                </>
-              ) : (
-                <>
-                  {t('formGetFreeInspection')}
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </>
-              )}
-            </Button>
-          </motion.form>
-        </div>
+              {/* Street Address */}
+              <div>
+                <Input
+                  type="text"
+                  value={formData.streetAddress}
+                  onChange={(e) => setFormData({ ...formData, streetAddress: e.target.value })}
+                  placeholder={isSpanish ? 'Dirección' : 'Street Address'}
+                  required
+                  className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                />
+              </div>
+
+              {/* City, State, ZIP Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div>
+                  <Input
+                    type="text"
+                    value={formData.city}
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    placeholder={isSpanish ? 'Ciudad' : 'City'}
+                    required
+                    className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                  />
+                </div>
+                <div>
+                  <select
+                    value={formData.state}
+                    onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                    className="w-full h-12 sm:h-14 px-3 py-2 text-base bg-gray-800 border border-gray-700 rounded-md text-white focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                  >
+                    <option value="CA">CA</option>
+                    <option value="AZ">AZ</option>
+                    <option value="NV">NV</option>
+                  </select>
+                </div>
+                <div className="col-span-2 sm:col-span-1">
+                  <Input
+                    type="text"
+                    value={formData.zipCode}
+                    onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
+                    placeholder={isSpanish ? 'Código Postal' : 'ZIP Code'}
+                    required
+                    className="h-12 sm:h-14 text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                  />
+                </div>
+              </div>
+
+              {/* Service Type Dropdown */}
+              <div>
+                <select
+                  value={formData.serviceType}
+                  onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+                  className="w-full h-12 sm:h-14 px-3 py-2 text-base bg-gray-800 border border-gray-700 rounded-md text-white focus:border-[#F97316] focus:ring-[#F97316] focus:outline-none"
+                >
+                  {serviceTypes.map((type) => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <Textarea
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder={isSpanish ? 'Mensaje (opcional)' : 'Message (optional)'}
+                  rows={3}
+                  className="resize-none text-base bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 focus:border-[#F97316] focus:ring-[#F97316]"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white h-14 sm:h-16 text-lg sm:text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                    {isSpanish ? 'Enviando...' : 'Submitting...'}
+                  </>
+                ) : isSubmitted ? (
+                  <>
+                    <CheckCircle2 className="mr-2 w-5 h-5" />
+                    {isSpanish ? '¡Enviado!' : 'Submitted!'}
+                  </>
+                ) : (
+                  <>
+                    {isSpanish ? 'OBTENER COTIZACIÓN GRATIS' : 'GET A FREE ESTIMATE'}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </>
+                )}
+              </Button>
+
+              {/* Trust Text */}
+              <p className="text-center text-gray-400 text-sm">
+                {isSpanish
+                  ? '🔒 Su información está segura. Nunca compartimos sus datos.'
+                  : '🔒 Your information is secure. We never share your data.'}
+              </p>
+            </form>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -2415,7 +3402,7 @@ function Footer() {
             <h4 className="font-heading text-lg font-bold mb-4">{t('footerContact')}</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+17147704756" className="text-gray-400 hover:text-[#F97316] transition-colors flex items-center gap-2">
+                <a href="tel:+17147704756" className="text-white hover:text-[#F97316] transition-colors flex items-center gap-2 font-semibold">
                   <Phone className="w-4 h-4" />
                   (714) 770-4756
                 </a>
@@ -2633,13 +3620,31 @@ function Chatbot() {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Live Chat Vertical Bar - Desktop */}
+      <motion.button
+        initial={{ x: 60 }}
+        animate={{ x: 0 }}
+        transition={{ delay: 1.5, type: 'spring', stiffness: 200 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 hidden sm:flex flex-col items-center gap-2 bg-[#1e40af] hover:bg-[#1e3a8a] text-white py-4 px-3 rounded-l-xl shadow-xl transition-colors group"
+        aria-label="Open live chat"
+      >
+        <span className="text-xs font-bold tracking-wider writing-mode-vertical transform rotate-180" style={{ writingMode: 'vertical-rl' }}>
+          LIVE CHAT
+        </span>
+        <div className="relative">
+          <MessageCircle className="w-5 h-5" />
+          <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#F97316] rounded-full animate-pulse" />
+        </div>
+      </motion.button>
+
+      {/* Floating Button - Mobile */}
       <motion.button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: 'spring' }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-24 sm:bottom-6 right-4 sm:right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-[#F97316] hover:bg-[#EA580C] rounded-full shadow-lg flex items-center justify-center transition-colors"
+        className="fixed bottom-24 right-4 z-50 sm:hidden w-14 h-14 bg-[#1e40af] hover:bg-[#1e3a8a] rounded-full shadow-lg flex items-center justify-center transition-colors"
         aria-label="Open chat assistant"
       >
         <AnimatePresence mode="wait">
@@ -2660,8 +3665,10 @@ function Chatbot() {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
+              className="relative"
             >
               <MessageCircle className="w-6 h-6 text-white" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-[#F97316] rounded-full animate-pulse" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -2671,28 +3678,31 @@ function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, x: 20, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-28 sm:right-4 sm:left-auto sm:top-auto z-[60] sm:z-50 sm:w-96 sm:max-w-md bg-white sm:rounded-2xl shadow-2xl overflow-hidden border-0 sm:border sm:border-gray-200 flex flex-col h-full sm:h-auto max-h-full sm:max-h-[calc(100vh-120px)]"
+            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-16 sm:left-auto sm:top-auto sm:w-96 sm:max-w-md bg-white sm:rounded-2xl shadow-2xl overflow-hidden border-0 sm:border sm:border-gray-200 flex flex-col h-full sm:h-auto max-h-full sm:max-h-[calc(100vh-120px)] z-[60] sm:z-50"
           >
             {/* Header */}
-            <div className="bg-[#F97316] p-3 sm:p-4 shrink-0">
+            <div className="bg-[#1e40af] p-3 sm:p-4 shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
-                    <HomeIcon className="w-5 h-5 text-[#F97316]" />
+                    <MessageCircle className="w-5 h-5 text-[#1e40af]" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-white text-sm sm:text-base">{t('chatAssistantTitle')}</h3>
-                    <p className="text-white/80 text-xs sm:text-sm">{t('chatAssistantStatus')}</p>
+                    <p className="text-green-400 text-xs sm:text-sm flex items-center gap-1">
+                      <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      {t('chatAssistantStatus')}
+                    </p>
                   </div>
                 </div>
-                {/* Mobile close button */}
+                {/* Close button */}
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="sm:hidden w-9 h-9 flex items-center justify-center text-white/80 hover:text-white"
+                  className="w-9 h-9 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                   aria-label="Close chat"
                 >
                   <X className="w-5 h-5" />
@@ -2712,7 +3722,7 @@ function Chatbot() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-3 py-2 sm:px-4 sm:py-3 ${
                       message.role === 'user'
-                        ? 'bg-[#F97316] text-white rounded-br-md'
+                        ? 'bg-[#1e40af] text-white rounded-br-md'
                         : 'bg-white text-gray-800 shadow-sm rounded-bl-md'
                     }`}
                   >
@@ -2747,7 +3757,7 @@ function Chatbot() {
                     <button
                       key={action}
                       onClick={() => handleQuickAction(action)}
-                      className="px-3 py-1.5 sm:py-2 bg-orange-50 hover:bg-orange-100 text-[#F97316] rounded-full text-xs sm:text-sm font-medium transition-colors min-h-[36px] sm:min-h-[40px]"
+                      className="px-3 py-1.5 sm:py-2 bg-blue-50 hover:bg-blue-100 text-[#1e40af] rounded-full text-xs sm:text-sm font-medium transition-colors min-h-[36px] sm:min-h-[40px]"
                     >
                       {action}
                     </button>
@@ -2770,7 +3780,7 @@ function Chatbot() {
                 <Button
                   onClick={() => handleSendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="bg-[#F97316] hover:bg-[#EA580C] text-white shrink-0 w-11 h-11 sm:w-10 sm:h-10"
+                  className="bg-[#1e40af] hover:bg-[#1e3a8a] text-white shrink-0 w-11 h-11 sm:w-10 sm:h-10"
                   size="icon"
                 >
                   <Send className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -3040,13 +4050,13 @@ export default function LandingPage() {
       <StatsSection />
       <SpecialOffersSection />
       <ServicesSection />
+      <EligibilitySection />
       <RoofingTypesSection />
       <WhyChooseUsSection />
       <LocalTrustSection />
       <AreasSection />
       <InsuranceSection />
       <GallerySection />
-      <VideoTestimonialsSection />
       <SocialProofSection />
       <WarrantySection />
       <CertificationsSection />

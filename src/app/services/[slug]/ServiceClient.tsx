@@ -24,6 +24,7 @@ import {
   ChevronDown,
   ChevronUp as ChevronUpIcon,
   Globe,
+  Lightbulb,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -45,6 +46,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Layers,
   Sun,
   Droplets,
+  Lightbulb,
 };
 
 export default function ServiceClient({ service, otherServices }: ServiceClientProps) {
@@ -495,7 +497,7 @@ export default function ServiceClient({ service, otherServices }: ServiceClientP
               <div className="flex items-center gap-2 mb-4">
                 <div className="bg-white rounded-lg shadow-sm p-2">
                   <img 
-                    src="https://i.ibb.co/FbssB2VW/Untitled-design.png" 
+                    src="https://i.ibb.co/0RZwPVxK/Untitled-design-5.png" 
                     alt="S NEW ROOF Logo" 
                     className="h-14 sm:h-16 w-auto object-contain"
                   />

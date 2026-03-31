@@ -222,7 +222,7 @@ export default function ManufacturersPage() {
             <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
               <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-1.5 sm:p-2">
                 <img
-                  src="https://i.ibb.co/0RZwPVxK/Untitled-design-5.png"
+                  src="https://i.ibb.co/FbssB2VW/Untitled-design.png"
                   alt="S NEW ROOF Logo"
                   className="h-12 sm:h-14 md:h-16 w-auto object-contain"
                 />

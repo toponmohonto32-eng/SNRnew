@@ -381,6 +381,52 @@ Gutter guards can reduce maintenance needs by preventing debris from entering yo
     image: '/hero-bg.png',
     icon: 'Droplets',
   },
+  {
+    slug: 'skylight-services',
+    name: 'Skylight Services',
+    shortDescription: 'Professional skylight installation, repair, and replacement for natural light and ventilation.',
+    description: 'Expert skylight services in Orange County. Installation, repair, leak prevention, and replacement. Bring natural light into your home.',
+    longDescription: `Skylights are a beautiful way to bring natural light into your home, reduce energy costs, and create a more open, airy atmosphere. S NEW ROOF provides comprehensive skylight services including installation, repair, replacement, and leak prevention for homeowners throughout Orange County.
+
+Our skylight installation services cover all types of skylights including fixed skylights for natural light, ventilating skylights for fresh air circulation, and tubular skylights for smaller spaces. We work with leading manufacturers like Velux to provide high-quality, energy-efficient skylight solutions.
+
+Proper installation is critical for skylight performance and leak prevention. Our experienced technicians understand the complexities of roof penetrations and use proper flashing techniques to ensure your skylight remains watertight for years to come. We handle all aspects of the installation, from structural considerations to interior finishing.
+
+If your existing skylight is leaking, fogging up, or showing signs of age, we offer expert repair and replacement services. We can upgrade old skylights to modern, energy-efficient models that reduce heat transfer and UV damage while maximizing natural light.`,
+    features: [
+      'New skylight installation',
+      'Velux skylight dealer',
+      'Fixed and ventilating skylights',
+      'Tubular sun tunnels',
+      'Skylight leak repair',
+      'Skylight replacement',
+      'Flashing repair',
+      'Motorized skylights',
+    ],
+    benefits: [
+      'Natural light reduces energy costs',
+      'Improved ventilation and air quality',
+      'Enhanced home aesthetics',
+      'Increased property value',
+      'UV protection options available',
+      'Professional leak-free installation',
+    ],
+    process: [
+      { step: 1, title: 'Consultation', description: 'Assess your home\'s structure and discuss skylight options.' },
+      { step: 2, title: 'Selection', description: 'Choose from fixed, ventilating, or tubular skylights.' },
+      { step: 3, title: 'Preparation', description: 'Structural assessment and proper flashing preparation.' },
+      { step: 4, title: 'Installation', description: 'Professional installation with proper sealing and flashing.' },
+      { step: 5, title: 'Finishing', description: 'Interior trim work and final inspection.' },
+    ],
+    faqs: [
+      { question: 'Will a skylight leak?', answer: 'Properly installed skylights with quality flashing should not leak. Our professional installation includes proper flashing techniques that integrate with your roofing system to prevent water intrusion.' },
+      { question: 'Can a skylight be installed on any roof?', answer: 'Most roofs can accommodate skylights. Factors like roof pitch, framing structure, and roofing material affect installation. We assess your roof during consultation to determine the best approach.' },
+      { question: 'How much does skylight installation cost?', answer: 'Cost varies based on skylight type, size, and installation complexity. Fixed skylights are typically less expensive than ventilating models. We provide free estimates for all skylight projects.' },
+      { question: 'Can you fix my leaking skylight?', answer: 'Yes, we repair leaking skylights. The solution may involve resealing, flashing repair, or in some cases, replacement. We diagnose the issue and recommend the most cost-effective solution.' },
+    ],
+    image: '/hero-bg.png',
+    icon: 'Lightbulb',
+  },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {
