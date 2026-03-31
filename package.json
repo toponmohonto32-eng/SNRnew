@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev -p 3000 2>&1 | tee dev.log",
     "build": "next build",
-    "build:static": "next build && next export -o dist",
+    "build:static": "cp next.config.static.ts next.config.ts.bak && cp next.config.static.ts next.config.ts && next build && mv next.config.ts.bak next.config.ts && mv out dist",
     "start": "next start",
     "lint": "eslint .",
+    "export": "next build",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
