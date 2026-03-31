@@ -2,8 +2,8 @@ export const translations = {
   en: {
     // Header
     brandName: "S NEW ROOF",
-    tagline1: "Proudly Based in Santa Ana",
-    tagline2: "Serving the OC/LA County Since 2008",
+    tagline1: "Your Neighborhood Roofer Helping & Protecting Families",
+    tagline2: "",
     navServices: "Services",
     navAreas: "Areas",
     navReviews: "Reviews",
@@ -411,8 +411,8 @@ export const translations = {
   es: {
     // Header
     brandName: "S NEW ROOF",
-    tagline1: "Orgullosamente en Santa Ana",
-    tagline2: "Sirviendo el Condado OC/LA Desde 2008",
+    tagline1: "Su Techador del Vecindario Ayudando y Protegiendo Familias",
+    tagline2: "",
     navServices: "Servicios",
     navAreas: "Áreas",
     navReviews: "Reseñas",

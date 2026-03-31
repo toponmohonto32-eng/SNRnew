@@ -112,8 +112,7 @@ function Header() {
             {/* Tagline - visible on all devices */}
             <div className="flex flex-col justify-center min-w-0">
               <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight truncate">{t('brandName')}</span>
-              <span className="text-[10px] sm:text-[10px] md:text-xs lg:text-sm text-[#F97316] font-semibold leading-tight whitespace-nowrap">{t('tagline1')}</span>
-              <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm text-gray-600 font-medium leading-tight hidden sm:block">{t('tagline2')}</span>
+              <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-[#F97316] font-semibold leading-tight">{t('tagline1')}</span>
             </div>
           </a>
 
@@ -2559,20 +2558,27 @@ function Footer() {
 
 // Chatbot Component
 function Chatbot() {
-  const { t } = useLanguage();
+  const { t, language, isSpanish } = useLanguage();
   
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      role: 'assistant',
-      content: t('chatGreeting'),
-      timestamp: new Date(),
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize or update greeting when language changes
+  useEffect(() => {
+    if (messages.length === 0 || (messages.length === 1 && messages[0].role === 'assistant')) {
+      setMessages([
+        {
+          id: '1',
+          role: 'assistant',
+          content: t('chatGreeting'),
+          timestamp: new Date(),
+        },
+      ]);
+    }
+  }, [language, t]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -2583,11 +2589,17 @@ function Chatbot() {
   }, [messages]);
 
   const handleQuickAction = (action: string) => {
-    const actionMessages: Record<string, string> = {
+    const actionMessagesEn: Record<string, string> = {
       [t('chatQuickInspection')]: 'Hi! I would like to schedule a FREE roof inspection at my home.',
       [t('chatQuickEmergency')]: 'HELP! I have an emergency roof leak and need immediate assistance!',
       [t('chatQuickQuote')]: 'Hello! I would like to get a free quote for a roofing project.',
     };
+    const actionMessagesEs: Record<string, string> = {
+      [t('chatQuickInspection')]: '¡Hola! Me gustaría programar una inspección GRATIS de mi techo.',
+      [t('chatQuickEmergency')]: '¡AYUDA! Tengo una fuga de emergencia en el techo y necesito asistencia inmediata.',
+      [t('chatQuickQuote')]: '¡Hola! Me gustaría obtener una cotización gratis para un proyecto de techado.',
+    };
+    const actionMessages = isSpanish ? actionMessagesEs : actionMessagesEn;
     handleSendMessage(actionMessages[action] || action);
   };
 
@@ -2620,7 +2632,8 @@ function Chatbot() {
         },
         body: JSON.stringify({ 
           message: text,
-          history: conversationHistory
+          history: conversationHistory,
+          language: language
         }),
       });
 
@@ -2633,7 +2646,7 @@ function Chatbot() {
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.response || data.message || 'Thank you for your message! A roofing expert will contact you shortly.',
+        content: data.response || data.message || (isSpanish ? '¡Gracias por su mensaje! Un experto en techos se comunicará con usted pronto.' : 'Thank you for your message! A roofing expert will contact you shortly.'),
         timestamp: new Date(),
       };
 
