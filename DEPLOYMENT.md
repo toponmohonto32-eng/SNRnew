@@ -1,150 +1,112 @@
-# S NEW ROOF - Deployment Guide
+# Deployment Guide for S NEW ROOF Website
 
-## Quick Deployment Options
+## Quick Deployment Steps
 
-### Option 1: Vercel (Recommended - Full Features)
+### Option 1: Vercel Deployment (Recommended)
 
-**Why Vercel?**
-- Zero configuration required
-- Full Next.js support including API routes
-- Automatic HTTPS
-- Global CDN
-- Instant deployments
+1. **Push code to GitHub**:
+   ```bash
+   cd /home/z/my-project
+   git add .
+   git commit -m "Update S NEW ROOF website"
+   git push origin main
+   ```
+   
+   If you get an authentication error, you need to create a GitHub Personal Access Token:
+   - Go to https://github.com/settings/tokens
+   - Click "Generate new token (classic)"
+   - Select `repo` permissions
+   - Copy the token and use it as your password
 
-**Steps:**
-1. Push code to GitHub: `git push origin main`
-2. Go to [vercel.com](https://vercel.com)
-3. Click "Import Project"
-4. Select your GitHub repository
-5. Click "Deploy"
+2. **Connect to Vercel**:
+   - Go to https://vercel.com/dashboard
+   - Click "Add New Project"
+   - Import your GitHub repository: `toponmohonto32-eng/SNRnew`
+   - Vercel will auto-detect Next.js settings
+   - Click "Deploy"
 
-**That's it!** Vercel will automatically:
-- Detect Next.js
-- Configure build settings
-- Deploy to a global CDN
-- Provide HTTPS
+3. **Or update existing Vercel project**:
+   - Go to https://vercel.com/dashboard
+   - Open your existing project (snewroof)
+   - Go to Settings > Git
+   - Update the repository connection to: `toponmohonto32-eng/SNRnew`
 
-### Option 2: GoDaddy Static Hosting
+### Option 2: Manual Vercel Deployment
 
-**Important Limitations:**
-- API routes will NOT work (chatbot needs external service)
-- No server-side features
-- Static HTML/CSS/JS only
-
-**Steps:**
-
-#### Method A: Using the Static Export
-
-1. Build the static export:
-```bash
-# First, update next.config.ts to use output: "export"
-bun run build
-```
-
-2. The `out/` folder contains all static files
-
-3. Upload to GoDaddy:
-   - Log into GoDaddy cPanel
-   - Go to File Manager
-   - Navigate to `public_html`
-   - Upload contents of `out/` folder
-   - Extract if needed
-
-#### Method B: FTP Upload
-
-1. Build locally:
-```bash
-bun run build
-```
-
-2. Use FTP client (FileZilla, WinSCP):
-   - Host: your-server.com
-   - Username: (from GoDaddy)
-   - Password: (from GoDaddy)
-   - Upload `out/` contents to `public_html/`
-
-### Option 3: GoDaddy with Node.js
-
-**Requirements:**
-- GoDaddy Ultimate or higher plan
-- Node.js support enabled
-
-**Steps:**
-1. Build the project:
-```bash
-bun run build
-```
-
-2. Upload entire project via FTP
-
-3. SSH into server and run:
-```bash
-npm install -g pm2
-pm2 start npm --name "snewroof" -- start
-```
-
-4. Configure `.htaccess` for reverse proxy
-
-## Build Commands Reference
+If you can't connect via GitHub:
 
 ```bash
-# Development
-bun run dev          # Start development server
+# Install Vercel CLI
+npm i -g vercel
 
-# Production Build (Vercel)
-bun run build        # Build for production
-bun run start        # Start production server
+# Login to Vercel
+vercel login
 
-# Static Export (GoDaddy)
-# First change output: "export" in next.config.ts
-bun run build        # Creates 'out' folder
-
-# Lint Check
-bun run lint         # Check for errors
+# Deploy to production
+cd /home/z/my-project
+vercel --prod
 ```
+
+### Option 3: GoDaddy Static Hosting
+
+For traditional hosting without server features:
+
+1. **Build static files**:
+   ```bash
+   cd /home/z/my-project
+   
+   # Update next.config.ts to use static export
+   # Change: output: "standalone" to output: "export"
+   
+   # Build the project
+   bun run build
+   ```
+
+2. **Upload to GoDaddy**:
+   - The `out/` folder contains all static files
+   - Upload contents via FTP or GoDaddy File Manager
+   - Point your domain to the `out/` folder
+
+## Current Project Status
+
+- ✅ Build successful (Next.js 16.1.3)
+- ✅ Lint passed (no errors)
+- ✅ All pages prerendered correctly
+- ✅ Vercel configuration ready (vercel.json)
+- ✅ Security headers configured
+- ✅ SEO optimized (sitemap.xml, robots.txt)
+
+## Pages Generated
+
+- `/` - Homepage
+- `/gallery/*` - Project gallery pages
+- `/locations/*` - Location pages (Santa Ana, Orange County, etc.)
+- `/roofing-types/*` - Roofing type pages
+- `/services/*` - Service pages
+- `/manufacturers` - Manufacturer certifications
+- `/certifications/*` - Certification pages
 
 ## Environment Variables
 
-Create `.env` file with:
-```env
-# Add any API keys if needed
-```
+Set these in Vercel dashboard (Settings > Environment Variables):
+- Any API keys or secrets your application needs
 
 ## Troubleshooting
 
-### Vercel Deployment Issues
+### GitHub Authentication Failed
+1. Create a Personal Access Token at https://github.com/settings/tokens
+2. Use token as password when pushing
+
+### Build Fails on Vercel
 1. Check build logs in Vercel dashboard
 2. Ensure all dependencies are in package.json
-3. Check for TypeScript errors: `bun run lint`
+3. Check for environment variable issues
 
-### GoDaddy Static Issues
-1. Ensure `output: "export"` in next.config.ts
-2. Check that all images are in `public/` folder
-3. Verify file paths are relative
+### Domain Configuration
+1. Go to Vercel project settings
+2. Add your custom domain
+3. Update DNS records as instructed
 
-### Common Errors
+## Contact
 
-**Error: "Image Optimization failed"**
-- Add `images: { unoptimized: true }` to next.config.ts
-
-**Error: "API route not found" (Static)**
-- API routes don't work in static exports
-- Use external API services instead
-
-## Post-Deployment Checklist
-
-- [ ] Test all pages load correctly
-- [ ] Test contact forms submit
-- [ ] Test phone number links
-- [ ] Test multi-language switching
-- [ ] Test on mobile devices
-- [ ] Check page speed
-- [ ] Test all images load
-- [ ] Verify HTTPS works
-- [ ] Submit sitemap to Google Search Console
-
-## Support
-
-For deployment issues, contact:
-- Vercel Support: [vercel.com/support](https://vercel.com/support)
-- GoDaddy Support: [godaddy.com/help](https://godaddy.com/help)
+If you need assistance, check the Vercel documentation at https://vercel.com/docs
