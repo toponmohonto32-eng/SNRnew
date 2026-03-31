@@ -104,7 +104,7 @@ function Header() {
           <a href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-1.5 sm:p-2">
               <img 
-                src="https://i.ibb.co/FbssB2VW/Untitled-design.png" 
+                src="https://i.ibb.co/0RZwPVxK/Untitled-design-5.png" 
                 alt="S NEW ROOF Logo" 
                 className="h-10 sm:h-14 md:h-16 w-auto object-contain"
               />
@@ -113,6 +113,7 @@ function Header() {
             <div className="flex flex-col justify-center min-w-0">
               <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 leading-tight truncate">{t('brandName')}</span>
               <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-[#F97316] font-semibold leading-tight">{t('tagline1')}</span>
+              <span className="text-[10px] sm:text-xs md:text-sm lg:text-base text-[#F97316] font-semibold leading-tight">{t('tagline2')}</span>
             </div>
           </a>
 
@@ -643,21 +644,25 @@ function GallerySection() {
       title: t('project1Title'),
       location: t('project1Location'),
       description: t('project1Desc'),
+      image: '/tile-roof.png',
     },
     {
       title: t('project2Title'),
       location: t('project2Location'),
       description: t('project2Desc'),
+      image: '/shingle-roof.png',
     },
     {
       title: t('project3Title'),
       location: t('project3Location'),
       description: t('project3Desc'),
+      image: '/flat-roof.png',
     },
     {
       title: t('project4Title'),
       location: t('project4Location'),
       description: t('project4Desc'),
+      image: '/storm-damage.png',
     },
   ];
 
@@ -694,7 +699,7 @@ function GallerySection() {
               <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-50 overflow-hidden">
                   <img
-                    src="/hero-bg.png"
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -715,7 +720,7 @@ function GallerySection() {
 
         <div className="text-center mt-10">
           <Button variant="outline" size="lg" className="border-2 border-gray-300" asChild>
-            <a href="/#contact">
+            <a href="/gallery">
               {t('galleryViewMore')}
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
@@ -950,8 +955,12 @@ function LocalTrustSection() {
           <Card className="inline-block bg-gradient-to-r from-gray-900 to-gray-800 border-0 shadow-xl">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-20 h-20 bg-[#F97316] rounded-full flex items-center justify-center shrink-0">
-                  <span className="text-3xl font-heading font-bold text-white">S</span>
+                <div className="w-20 h-20 rounded-full overflow-hidden shrink-0 border-4 border-[#F97316]">
+                  <img 
+                    src="/avatar.png" 
+                    alt="Samuel - Owner" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="text-left">
                   <p className="text-white/90 italic text-lg mb-3">
@@ -1986,25 +1995,25 @@ function RoofingTypesSection() {
       title: t('roofingAsphalt'),
       description: t('roofingAsphaltDesc'),
       features: [t('roofingAsphaltF1'), t('roofingAsphaltF2'), t('roofingAsphaltF3')],
-      image: '/hero-bg.png',
+      image: '/shingle-roof.png',
     },
     {
       title: t('roofingClay'),
       description: t('roofingClayDesc'),
       features: [t('roofingClayF1'), t('roofingClayF2'), t('roofingClayF3')],
-      image: '/hero-bg.png',
+      image: '/tile-roof.png',
     },
     {
       title: t('roofingMetal'),
       description: t('roofingMetalDesc'),
       features: [t('roofingMetalF1'), t('roofingMetalF2'), t('roofingMetalF3')],
-      image: '/hero-bg.png',
+      image: '/roofing-team.png',
     },
     {
       title: t('roofingFlat'),
       description: t('roofingFlatDesc'),
       features: [t('roofingFlatF1'), t('roofingFlatF2'), t('roofingFlatF3')],
-      image: '/hero-bg.png',
+      image: '/flat-roof.png',
     },
   ];
 
